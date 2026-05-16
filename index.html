@@ -298,13 +298,13 @@
               <p>Disponible du lundi au vendredi, 9h-18h</p>
             </a>
 
-            <a class="contact-card contact-card--energy" href="https://mail.google.com/mail/?view=cm&fs=1&to=direction.msenergy@gmail.com&su=Demande%20d%27%C3%A9tude%20-%20MS%20ENERGY&body=Bonjour%20MS%20ENERGY%2C%0D%0A%0D%0AJe%20souhaite%20vous%20contacter%20pour%20un%20projet%20%C3%A9lectrique%20ou%20IRVE.%0D%0A%0D%0ANom%20%3A%0D%0AT%C3%A9l%C3%A9phone%20%3A%0D%0AProjet%20%3A%0D%0AAdresse%20du%20chantier%20%3A%0D%0A%0D%0AMerci." target="_blank" rel="noopener" aria-label="Envoyer un email à MS ENERGY">
+            <button class="contact-card contact-card--energy" type="button" id="open-contact-form" aria-label="Ouvrir le formulaire email MS ENERGY">
               <span class="contact-card__icon" aria-hidden="true">✉</span>
               <span class="contact-card__arrow" aria-hidden="true">↗</span>
               <small>Email</small>
               <strong>direction.msenergy@gmail.com</strong>
               <p>Réponse sous 24h - étude offerte avant devis</p>
-            </a>
+            </button>
           </div>
 
           <div class="contact-strip" aria-label="Informations pratiques">
@@ -312,6 +312,64 @@
             <div><span aria-hidden="true">◷</span><p><strong>Horaires</strong>Lun - Ven : 09h00 - 18h00</p></div>
             <div><span class="status-dot" aria-hidden="true"></span><p><strong>Statut</strong>Disponible pour nouveaux projets</p></div>
           </div>
+
+          <dialog class="contact-modal" id="contact-form-dialog" aria-label="Formulaire email MS ENERGY">
+            <button class="contact-modal__close" type="button" aria-label="Fermer le formulaire">×</button>
+            <form class="contact-form" id="contact-form">
+              <div class="contact-form__head">
+                <p class="eyebrow">// Email</p>
+                <h3>Demande d'étude</h3>
+                <p>Remplissez les informations utiles, le message sera préparé pour MS ENERGY.</p>
+              </div>
+
+              <div class="contact-form__grid">
+                <label>
+                  Nom
+                  <input name="name" type="text" autocomplete="name" placeholder="Votre nom" required>
+                </label>
+                <label>
+                  Téléphone
+                  <input name="phone" type="tel" autocomplete="tel" placeholder="06 00 00 00 00" required>
+                </label>
+                <label>
+                  Email
+                  <input name="email" type="email" autocomplete="email" placeholder="votre@email.fr">
+                </label>
+                <label>
+                  Type de projet
+                  <select name="project">
+                    <option value="Installation borne IRVE - zone prête">Installation borne IRVE - zone prête</option>
+                    <option value="Pré-installation souterraine pour borne IRVE">Pré-installation souterraine IRVE</option>
+                    <option value="Autre demande">Autre demande</option>
+                  </select>
+                </label>
+                <label>
+                  Vous êtes
+                  <select name="clientType">
+                    <option value="Particulier">Particulier</option>
+                    <option value="Professionnel">Professionnel</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                Adresse du chantier
+                <input name="address" type="text" autocomplete="street-address" placeholder="Ville, rue ou résidence">
+              </label>
+
+              <label>
+                Message
+                <textarea name="message" rows="5" placeholder="Décrivez rapidement votre besoin, les délais souhaités ou les contraintes techniques."></textarea>
+              </label>
+
+              <p class="contact-form__status" aria-live="polite"></p>
+
+              <div class="contact-form__actions">
+                <button class="btn btn--primary" type="submit">Préparer l'email</button>
+                <button class="btn btn--ghost" type="button" id="copy-contact-message">Copier le message</button>
+              </div>
+            </form>
+          </dialog>
         </div>
       </section>
     </main>
@@ -435,6 +493,74 @@
       });
       projector?.addEventListener("close", () => {
         document.body.classList.remove("projector-open");
+      });
+
+      const contactFormDialog = document.querySelector("#contact-form-dialog");
+      const openContactForm = document.querySelector("#open-contact-form");
+      const closeContactForm = contactFormDialog?.querySelector(".contact-modal__close");
+      const contactForm = document.querySelector("#contact-form");
+      const copyContactMessage = document.querySelector("#copy-contact-message");
+      const contactFormStatus = contactForm?.querySelector(".contact-form__status");
+
+      function getContactMessage() {
+        const data = new FormData(contactForm);
+        return [
+          "Bonjour MS ENERGY,",
+          "",
+          "Je souhaite vous contacter pour un projet électrique ou IRVE.",
+          "",
+          `Nom : ${data.get("name") || ""}`,
+          `Téléphone : ${data.get("phone") || ""}`,
+          `Email : ${data.get("email") || ""}`,
+          `Profil : ${data.get("clientType") || ""}`,
+          `Type de projet : ${data.get("project") || ""}`,
+          `Adresse du chantier : ${data.get("address") || ""}`,
+          "",
+          "Message :",
+          data.get("message") || "",
+          "",
+          "Merci."
+        ].join("\n");
+      }
+
+      function closeContactDialog() {
+        contactFormDialog?.close();
+      }
+
+      openContactForm?.addEventListener("click", () => {
+        contactFormStatus.textContent = "";
+        contactFormDialog?.showModal();
+      });
+
+      closeContactForm?.addEventListener("click", closeContactDialog);
+      contactFormDialog?.addEventListener("click", (event) => {
+        if (event.target === contactFormDialog) {
+          closeContactDialog();
+        }
+      });
+
+      contactForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!contactForm.reportValidity()) {
+          return;
+        }
+
+        const subject = encodeURIComponent("Demande d'étude - MS ENERGY");
+        const body = encodeURIComponent(getContactMessage());
+        contactFormStatus.textContent = "Votre email est prêt dans votre application de messagerie.";
+        window.location.href = `mailto:direction.msenergy@gmail.com?subject=${subject}&body=${body}`;
+      });
+
+      copyContactMessage?.addEventListener("click", async () => {
+        const message = getContactMessage();
+
+        try {
+          await navigator.clipboard.writeText(message);
+          contactFormStatus.textContent = "Message copié. Vous pouvez le coller dans votre email.";
+        } catch {
+          contactFormStatus.textContent = "Copie impossible automatiquement. Sélectionnez le texte du formulaire.";
+        }
       });
     </script>
   </body>
