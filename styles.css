@@ -982,6 +982,30 @@ body.nav-hidden .site-header {
   text-transform: uppercase;
 }
 
+@media (min-width: 721px) {
+  .projector {
+    width: min(1160px, calc(100vw - 32px));
+  }
+
+  .projector[open] {
+    grid-template-columns: minmax(0, 1.26fr) minmax(380px, 0.74fr);
+  }
+
+  .projector__content {
+    min-width: 0;
+    padding: clamp(24px, 3vw, 36px);
+  }
+
+  .projector__content h3 {
+    max-width: 100%;
+    font-size: clamp(1.45rem, 1.72vw, 1.95rem);
+    line-height: 1.04;
+    overflow-wrap: normal;
+    word-break: normal;
+    text-wrap: balance;
+  }
+}
+
 .projector__content p:not(.eyebrow) {
   margin: 0;
   color: var(--muted);
