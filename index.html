@@ -164,7 +164,7 @@
           </div>
 
           <div class="portfolio__notice" role="note">
-            <span aria-hidden="true">◎</span>
+            <span aria-hidden="true"><img src="images/instagram.png" alt=""></span>
             <p>Photos de réalisations sur site : cheminements, tableaux, réseaux techniques et pré-équipement IRVE. Les chantiers récents sont publiés sur Instagram.</p>
             <a href="https://www.instagram.com/ms.energy.34/" target="_blank" rel="noopener" aria-label="Ouvrir Instagram MS ENERGY">@ms.energy.34</a>
           </div>
@@ -305,12 +305,27 @@
               <strong>direction.msenergy@gmail.com</strong>
               <p>Réponse sous 24h - étude offerte avant devis</p>
             </button>
+
+            <button class="contact-card contact-card--hiring" type="button" id="open-hiring-form" aria-label="Ouvrir le formulaire de recrutement MS ENERGY">
+              <span class="contact-card__icon" aria-hidden="true">＋</span>
+              <span class="contact-card__arrow" aria-hidden="true">↗</span>
+              <small>Recrutement</small>
+              <strong>Candidature spontanée</strong>
+              <p><span class="hiring-status-dot" aria-hidden="true"></span><span id="hiring-status-label">Recrutements ouverts</span></p>
+            </button>
           </div>
 
           <div class="contact-strip" aria-label="Informations pratiques">
             <div><span aria-hidden="true">⌖</span><p><strong>Localisation</strong>10 Rue Rudolf Noureev, 34000 Montpellier</p></div>
             <div><span aria-hidden="true">◷</span><p><strong>Horaires</strong>Lun - Ven : 09h00 - 18h00</p></div>
             <div><span class="status-dot" aria-hidden="true"></span><p><strong>Statut</strong>Disponible pour nouveaux projets</p></div>
+          </div>
+          <div class="contact-actions">
+            <button class="admin-access" type="button" id="open-admin-panel">Accès admin</button>
+            <a class="instagram-access" href="https://www.instagram.com/ms.energy.34/" target="_blank" rel="noopener" aria-label="Ouvrir Instagram MS ENERGY">
+              <img src="images/instagram.png" alt="" aria-hidden="true">
+              Instagram
+            </a>
           </div>
 
           <dialog class="contact-modal" id="contact-form-dialog" aria-label="Formulaire email MS ENERGY">
@@ -369,6 +384,92 @@
                 <button class="btn btn--ghost" type="button" id="copy-contact-message">Copier le message</button>
               </div>
             </form>
+          </dialog>
+
+          <dialog class="contact-modal" id="hiring-form-dialog" aria-label="Formulaire de recrutement MS ENERGY">
+            <button class="contact-modal__close" type="button" aria-label="Fermer le formulaire recrutement">×</button>
+            <form class="contact-form" id="hiring-form">
+              <div class="contact-form__head">
+                <p class="eyebrow">// Recrutement</p>
+                <h3>Candidature</h3>
+                <p>Envoyez vos coordonnées, votre message, puis joignez votre CV et votre lettre dans votre email.</p>
+              </div>
+
+              <div class="contact-form__grid">
+                <label>
+                  Nom
+                  <input name="name" type="text" autocomplete="name" placeholder="Votre nom" required>
+                </label>
+                <label>
+                  Téléphone
+                  <input name="phone" type="tel" autocomplete="tel" placeholder="06 00 00 00 00" required>
+                </label>
+                <label>
+                  Email
+                  <input name="email" type="email" autocomplete="email" placeholder="votre@email.fr" required>
+                </label>
+                <label>
+                  Poste recherché
+                  <input name="role" type="text" placeholder="Électricien, technicien, alternance...">
+                </label>
+              </div>
+
+              <label>
+                Lettre de motivation
+                <input name="coverLetter" type="file" accept=".pdf,.doc,.docx,.odt">
+              </label>
+
+              <label>
+                CV
+                <input name="resume" type="file" accept=".pdf,.doc,.docx,.odt" required>
+              </label>
+
+              <label>
+                Message
+                <textarea name="message" rows="5" placeholder="Présentez rapidement votre profil, vos disponibilités et votre expérience."></textarea>
+              </label>
+
+              <p class="contact-form__status" aria-live="polite"></p>
+
+              <div class="contact-form__actions">
+                <button class="btn btn--primary" type="submit">Préparer la candidature</button>
+                <button class="btn btn--ghost" type="button" id="copy-hiring-message">Copier le message</button>
+              </div>
+            </form>
+          </dialog>
+
+          <dialog class="contact-modal admin-modal" id="admin-panel-dialog" aria-label="Accès admin recrutement">
+            <button class="contact-modal__close" type="button" aria-label="Fermer l'accès admin">×</button>
+            <form class="contact-form" id="admin-login-form">
+              <div class="contact-form__head">
+                <p class="eyebrow">// Admin</p>
+                <h3>Recrutement</h3>
+                <p>Ouvrez ou fermez l'affichage des candidatures sur le site.</p>
+              </div>
+
+              <label>
+                Code admin
+                <input name="password" type="password" autocomplete="current-password" placeholder="Code admin" required>
+              </label>
+
+              <p class="contact-form__status" aria-live="polite"></p>
+
+              <div class="contact-form__actions">
+                <button class="btn btn--primary" type="submit">Se connecter</button>
+              </div>
+            </form>
+
+            <div class="contact-form admin-controls" id="admin-controls" hidden>
+              <div class="contact-form__head">
+                <p class="eyebrow">// Statut actuel</p>
+                <h3 id="admin-status-title">Ouvert</h3>
+                <p>Ce réglage est conservé dans ce navigateur.</p>
+              </div>
+              <div class="contact-form__actions">
+                <button class="btn btn--primary" type="button" id="set-hiring-open">Ouvrir</button>
+                <button class="btn btn--ghost" type="button" id="set-hiring-closed">Fermer</button>
+              </div>
+            </div>
           </dialog>
         </div>
       </section>
@@ -501,6 +602,21 @@
       const contactForm = document.querySelector("#contact-form");
       const copyContactMessage = document.querySelector("#copy-contact-message");
       const contactFormStatus = contactForm?.querySelector(".contact-form__status");
+      const hiringCard = document.querySelector("#open-hiring-form");
+      const hiringStatusLabel = document.querySelector("#hiring-status-label");
+      const hiringFormDialog = document.querySelector("#hiring-form-dialog");
+      const hiringForm = document.querySelector("#hiring-form");
+      const hiringFormStatus = hiringForm?.querySelector(".contact-form__status");
+      const copyHiringMessage = document.querySelector("#copy-hiring-message");
+      const openAdminPanel = document.querySelector("#open-admin-panel");
+      const adminPanelDialog = document.querySelector("#admin-panel-dialog");
+      const adminLoginForm = document.querySelector("#admin-login-form");
+      const adminLoginStatus = adminLoginForm?.querySelector(".contact-form__status");
+      const adminControls = document.querySelector("#admin-controls");
+      const adminStatusTitle = document.querySelector("#admin-status-title");
+      const setHiringOpen = document.querySelector("#set-hiring-open");
+      const setHiringClosed = document.querySelector("#set-hiring-closed");
+      const adminPassword = "msenergy34";
 
       function getContactMessage() {
         const data = new FormData(contactForm);
@@ -562,6 +678,134 @@
           contactFormStatus.textContent = "Copie impossible automatiquement. Sélectionnez le texte du formulaire.";
         }
       });
+
+      function isHiringOpen() {
+        return localStorage.getItem("msEnergyHiringOpen") !== "false";
+      }
+
+      function setHiringState(open) {
+        localStorage.setItem("msEnergyHiringOpen", open ? "true" : "false");
+        updateHiringState();
+      }
+
+      function updateHiringState() {
+        const open = isHiringOpen();
+        hiringStatusLabel.textContent = open ? "Recrutements ouverts" : "Recrutements fermés";
+        hiringCard.classList.toggle("is-closed", !open);
+        hiringCard.setAttribute("aria-disabled", open ? "false" : "true");
+        adminStatusTitle.textContent = open ? "Ouvert" : "Fermé";
+      }
+
+      function getFileName(form, field) {
+        const file = form.elements[field]?.files?.[0];
+        return file ? file.name : "Non joint";
+      }
+
+      function getHiringMessage() {
+        const data = new FormData(hiringForm);
+        return [
+          "Bonjour MS ENERGY,",
+          "",
+          "Je souhaite vous envoyer ma candidature.",
+          "",
+          `Nom : ${data.get("name") || ""}`,
+          `Téléphone : ${data.get("phone") || ""}`,
+          `Email : ${data.get("email") || ""}`,
+          `Poste recherché : ${data.get("role") || ""}`,
+          "",
+          `CV sélectionné : ${getFileName(hiringForm, "resume")}`,
+          `Lettre sélectionnée : ${getFileName(hiringForm, "coverLetter")}`,
+          "",
+          "Message :",
+          data.get("message") || "",
+          "",
+          "Merci."
+        ].join("\n");
+      }
+
+      hiringCard?.addEventListener("click", () => {
+        if (!isHiringOpen()) {
+          alert("Les recrutements sont actuellement fermés.");
+          return;
+        }
+
+        hiringFormStatus.textContent = "";
+        hiringFormDialog?.showModal();
+      });
+
+      hiringFormDialog?.querySelector(".contact-modal__close")?.addEventListener("click", () => {
+        hiringFormDialog.close();
+      });
+
+      hiringFormDialog?.addEventListener("click", (event) => {
+        if (event.target === hiringFormDialog) {
+          hiringFormDialog.close();
+        }
+      });
+
+      hiringForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!hiringForm.reportValidity()) {
+          return;
+        }
+
+        const subject = encodeURIComponent("Candidature - MS ENERGY");
+        const body = encodeURIComponent(getHiringMessage());
+        hiringFormStatus.textContent = "Email préparé. Joignez votre CV et votre lettre dans votre application mail avant l'envoi.";
+        window.location.href = `mailto:direction.msenergy@gmail.com?subject=${subject}&body=${body}`;
+      });
+
+      copyHiringMessage?.addEventListener("click", async () => {
+        const message = getHiringMessage();
+
+        try {
+          await navigator.clipboard.writeText(message);
+          hiringFormStatus.textContent = "Message copié. Pensez à joindre le CV et la lettre dans votre email.";
+        } catch {
+          hiringFormStatus.textContent = "Copie impossible automatiquement. Sélectionnez le texte du formulaire.";
+        }
+      });
+
+      openAdminPanel?.addEventListener("click", () => {
+        adminLoginForm.hidden = false;
+        adminControls.hidden = true;
+        adminControls.setAttribute("aria-hidden", "true");
+        adminLoginForm.reset();
+        adminLoginStatus.textContent = "";
+        adminPanelDialog?.showModal();
+      });
+
+      adminPanelDialog?.querySelector(".contact-modal__close")?.addEventListener("click", () => {
+        adminPanelDialog.close();
+      });
+
+      adminPanelDialog?.addEventListener("click", (event) => {
+        if (event.target === adminPanelDialog) {
+          adminPanelDialog.close();
+        }
+      });
+
+      adminLoginForm?.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const password = new FormData(adminLoginForm).get("password");
+
+        if (password !== adminPassword) {
+          adminControls.hidden = true;
+          adminControls.setAttribute("aria-hidden", "true");
+          adminLoginStatus.textContent = "Code admin incorrect.";
+          return;
+        }
+
+        adminLoginForm.hidden = true;
+        adminControls.hidden = false;
+        adminControls.removeAttribute("aria-hidden");
+        updateHiringState();
+      });
+
+      setHiringOpen?.addEventListener("click", () => setHiringState(true));
+      setHiringClosed?.addEventListener("click", () => setHiringState(false));
+      updateHiringState();
     </script>
   </body>
 </html>
