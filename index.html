@@ -16,7 +16,7 @@
     >
     <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
+  <body class="theme-light">
     <a class="skip-link" href="#contenu">Aller au contenu</a>
 
     <div class="ticker" aria-label="Domaines techniques MS ENERGY">
@@ -37,6 +37,10 @@
           <a href="#realisations">Réalisations</a>
           <a href="#contact">Contact</a>
         </div>
+        <button class="appearance-toggle" type="button" id="appearance-toggle" aria-label="Changer l'apparence du site">
+          <span aria-hidden="true"></span>
+          Mode clair
+        </button>
         <a class="btn btn--primary nav__cta" href="#contact">Étude de projet</a>
       </nav>
     </header>
@@ -59,7 +63,7 @@
           </h1>
 
           <p class="hero__lead">
-            Conception, installation et maintenance d'infrastructures électriques et de bornes de recharge pour véhicules électriques.
+            Installation électrique, pré-équipement IRVE et bornes de recharge à Montpellier.
           </p>
 
           <div class="hero__actions" aria-label="Actions principales">
@@ -88,7 +92,7 @@
                 <span aria-hidden="true">⌁</span>
               </div>
               <h3>Cheminement de câbles</h3>
-              <p>Installation de chemins de câbles métalliques et PVC, courants forts et faibles, conformes aux normes en vigueur.</p>
+              <p>Passage propre des câbles pour parkings, locaux techniques et IRVE.</p>
             </article>
 
             <article class="service-card">
@@ -97,7 +101,7 @@
                 <span aria-hidden="true">▧</span>
               </div>
               <h3>Percement dalles béton</h3>
-              <p>Carottage et percement de dalles béton pour le passage de câbles et de canalisations. Précision millimétrique garantie.</p>
+              <p>Carottage précis pour créer les passages techniques nécessaires.</p>
             </article>
 
             <article class="service-card">
@@ -106,7 +110,7 @@
                 <span aria-hidden="true">▤</span>
               </div>
               <h3>Raccordement électrique</h3>
-              <p>Raccordement de tableaux, protections et équipements techniques. Repérage propre, serrage contrôlé et mise en conformité des circuits.</p>
+              <p>Tableaux, protections et circuits raccordés avec repérage clair.</p>
             </article>
 
             <article class="service-card service-card--wide service-card--energy">
@@ -115,7 +119,7 @@
                 <span aria-hidden="true">↯</span>
               </div>
               <h3>Pré-installation bornes IRVE</h3>
-              <p>Préparation, protections et pré-câblage pour l'installation de bornes de recharge, avec cheminement sécurisé et attente prête au raccordement.</p>
+              <p>Préparation de la zone, protections et câblage avant pose de borne.</p>
             </article>
 
             <article class="service-card service-card--full service-card--energy">
@@ -124,7 +128,7 @@
                 <span aria-hidden="true">⏻</span>
               </div>
               <h3>Installation bornes IRVE</h3>
-              <p>Pose de la borne, raccordement final, paramétrage et essais de charge lorsque l'alimentation, les protections et les prérequis techniques sont validés.</p>
+              <p>Pose, raccordement et test de charge lorsque la zone est prête.</p>
             </article>
           </div>
 
@@ -136,7 +140,7 @@
               <p class="eyebrow">// Certification</p>
               <h3>Reconnaissance Qualifelec</h3>
               <p>
-                Une qualification métier qui valorise le sérieux des interventions électriques, la maîtrise technique et l'engagement qualité sur chantier.
+                Un repère qualité pour des interventions électriques sérieuses et maîtrisées.
               </p>
             </div>
           </article>
@@ -158,26 +162,26 @@
               <h2 id="portfolio-title">Portfolio <span>de chantier</span></h2>
             </div>
             <a class="pill-link pill-link--instagram" href="https://www.instagram.com/ms.energy.34/" target="_blank" rel="noopener" aria-label="Voir le profil Instagram MS ENERGY">
-              <span aria-hidden="true">@</span>
+              <span aria-hidden="true"><img src="images/instagram.png" alt=""></span>
               Chantiers récents
             </a>
           </div>
 
           <div class="portfolio__notice" role="note">
             <span aria-hidden="true"><img src="images/instagram.png" alt=""></span>
-            <p>Photos de réalisations sur site : cheminements, tableaux, réseaux techniques et pré-équipement IRVE. Les chantiers récents sont publiés sur Instagram.</p>
+            <p>Photos de chantiers : câbles, tableaux, réseaux et pré-équipement IRVE.</p>
             <a href="https://www.instagram.com/ms.energy.34/" target="_blank" rel="noopener" aria-label="Ouvrir Instagram MS ENERGY">@ms.energy.34</a>
           </div>
 
           <div class="gallery">
-            <figure class="work-card work-card--wide">
+            <figure class="work-card">
               <button class="work-card__projector" type="button" data-title="Traçage laser avant intervention" data-detail="Repérage précis des axes avant percement, fixation ou passage technique." data-meta="Préparation chantier · Sécurisation · Précision">
                 <img class="media media--laser" src="images/trace-laser-1.jpg" alt="Tracé laser préparatoire sur mur technique" loading="lazy">
               </button>
               <figcaption>
                 <span>CH.01</span>
                 <strong>Traçage laser avant intervention</strong>
-                <p>Axes de percement et de fixation contrôlés avant exécution.</p>
+              <p>Repérage avant percement ou fixation.</p>
                 <small>Préparation chantier · Sécurisation · Précision</small>
               </figcaption>
             </figure>
@@ -189,7 +193,7 @@
               <figcaption>
                 <span>CH.02</span>
                 <strong>Cheminement de câbles</strong>
-                <p>Distribution en plafond pour alimentation technique et IRVE.</p>
+                <p>Distribution en plafond pour IRVE.</p>
                 <small>Courant fort · Parking · IRVE</small>
               </figcaption>
             </figure>
@@ -201,7 +205,7 @@
               <figcaption>
                 <span>CH.03</span>
                 <strong>Baie informatique</strong>
-                <p>Centralisation réseau, brassage et repérage clair des lignes.</p>
+                <p>Réseau centralisé et repéré.</p>
                 <small>Réseau · Brassage · Local technique</small>
               </figcaption>
             </figure>
@@ -213,7 +217,7 @@
               <figcaption>
                 <span>CH.04</span>
                 <strong>Tableau électrique mural</strong>
-                <p>Protections regroupées et distribution lisible en local technique.</p>
+                <p>Tableau lisible en local technique.</p>
                 <small>Tableau · Protections · NF C 15-100</small>
               </figcaption>
             </figure>
@@ -225,7 +229,7 @@
               <figcaption>
                 <span>CH.05</span>
                 <strong>Appareillage de tableau</strong>
-                <p>Protections organisées pour contrôle, repérage et maintenance.</p>
+                <p>Protections organisées et repérées.</p>
                 <small>Distribution · Repérage · Maintenance</small>
               </figcaption>
             </figure>
@@ -237,7 +241,7 @@
               <figcaption>
                 <span>CH.06</span>
                 <strong>Borne IRVE installée</strong>
-                <p>Pose, raccordement et finition du point de recharge.</p>
+                <p>Borne posée et raccordée.</p>
                 <small>IRVE · Recharge · Mise en service</small>
               </figcaption>
             </figure>
@@ -249,19 +253,19 @@
               <figcaption>
                 <span>CH.07</span>
                 <strong>Borne résidentielle prête à l'usage</strong>
-                <p>Point de charge mural raccordé, propre et immédiatement exploitable.</p>
+                <p>Point de charge prêt à l'usage.</p>
                 <small>IRVE · Résidentiel · Borne murale</small>
               </figcaption>
             </figure>
 
-            <figure class="work-card work-card--wide">
+            <figure class="work-card">
               <button class="work-card__projector" type="button" data-title="Recharge véhicule opérationnelle" data-detail="Borne raccordée et testée pour recharge quotidienne en parking ou résidence." data-meta="Véhicule électrique · Usage réel · Contrôle final">
                 <img class="media media--car-charge" src="images/borne-irve-voiture-7.webp" alt="Véhicule électrique branché à une borne de recharge" loading="lazy">
               </button>
               <figcaption>
                 <span>CH.08</span>
                 <strong>Recharge véhicule opérationnelle</strong>
-                <p>Installation testée en condition réelle avant livraison.</p>
+                <p>Recharge testée avant livraison.</p>
                 <small>Véhicule électrique · Usage réel · Contrôle final</small>
               </figcaption>
             </figure>
@@ -295,7 +299,7 @@
               <span class="contact-card__arrow" aria-hidden="true">↗</span>
               <small>Téléphone</small>
               <strong>06 63 25 38 41</strong>
-              <p>Disponible du lundi au vendredi, 9h-18h</p>
+              <p>Appel direct, lun-ven 9h-18h</p>
             </a>
 
             <button class="contact-card contact-card--energy" type="button" id="open-contact-form" aria-label="Ouvrir le formulaire email MS ENERGY">
@@ -303,7 +307,7 @@
               <span class="contact-card__arrow" aria-hidden="true">↗</span>
               <small>Email</small>
               <strong>direction.msenergy@gmail.com</strong>
-              <p>Réponse sous 24h - étude offerte avant devis</p>
+              <p>Formulaire rapide, réponse sous 24h</p>
             </button>
 
             <button class="contact-card contact-card--hiring" type="button" id="open-hiring-form" aria-label="Ouvrir le formulaire de recrutement MS ENERGY">
@@ -392,7 +396,7 @@
               <div class="contact-form__head">
                 <p class="eyebrow">// Recrutement</p>
                 <h3>Candidature</h3>
-                <p>Envoyez vos coordonnées, votre message, puis joignez votre CV et votre lettre dans votre email.</p>
+                <p>Envoyez vos coordonnées, votre message, puis joignez vos documents PDF dans votre email.</p>
               </div>
 
               <div class="contact-form__grid">
@@ -415,13 +419,18 @@
               </div>
 
               <label>
-                Lettre de motivation
-                <input name="coverLetter" type="file" accept=".pdf,.doc,.docx,.odt">
+                Lettre de motivation - PDF uniquement
+                <input name="coverLetter" type="file" accept="application/pdf,.pdf">
               </label>
 
               <label>
-                CV
-                <input name="resume" type="file" accept=".pdf,.doc,.docx,.odt" required>
+                CV - PDF uniquement
+                <input name="resume" type="file" accept="application/pdf,.pdf" required>
+              </label>
+
+              <label>
+                Autre document - PDF uniquement
+                <input name="otherDocument" type="file" accept="application/pdf,.pdf">
               </label>
 
               <label>
@@ -491,9 +500,26 @@
     </footer>
     <script>
       const root = document.body;
+      const appearanceToggle = document.querySelector("#appearance-toggle");
       let lastScrollY = window.scrollY;
       let ticking = false;
       let lastTouchY = 0;
+
+      function setTheme(theme) {
+        root.classList.toggle("theme-light", theme === "light");
+        appearanceToggle?.setAttribute("aria-pressed", theme === "dark" ? "true" : "false");
+        if (appearanceToggle) {
+          appearanceToggle.lastChild.textContent = theme === "dark" ? " Mode sombre" : " Mode clair";
+        }
+        localStorage.setItem("msEnergyTheme", theme);
+      }
+
+      setTheme(localStorage.getItem("msEnergyTheme") || "light");
+
+      appearanceToggle?.addEventListener("click", () => {
+        const nextTheme = root.classList.contains("theme-light") ? "dark" : "light";
+        setTheme(nextTheme);
+      });
 
       function updateHeader() {
         const currentScrollY = Math.max(window.scrollY, 0);
@@ -715,6 +741,7 @@
           "",
           `CV sélectionné : ${getFileName(hiringForm, "resume")}`,
           `Lettre sélectionnée : ${getFileName(hiringForm, "coverLetter")}`,
+          `Autre document sélectionné : ${getFileName(hiringForm, "otherDocument")}`,
           "",
           "Message :",
           data.get("message") || "",
@@ -752,7 +779,7 @@
 
         const subject = encodeURIComponent("Candidature - MS ENERGY");
         const body = encodeURIComponent(getHiringMessage());
-        hiringFormStatus.textContent = "Email préparé. Joignez votre CV et votre lettre dans votre application mail avant l'envoi.";
+        hiringFormStatus.textContent = "Email préparé. Joignez les PDF sélectionnés dans votre application mail avant l'envoi.";
         window.location.href = `mailto:direction.msenergy@gmail.com?subject=${subject}&body=${body}`;
       });
 
@@ -761,7 +788,7 @@
 
         try {
           await navigator.clipboard.writeText(message);
-          hiringFormStatus.textContent = "Message copié. Pensez à joindre le CV et la lettre dans votre email.";
+          hiringFormStatus.textContent = "Message copié. Pensez à joindre les PDF sélectionnés dans votre email.";
         } catch {
           hiringFormStatus.textContent = "Copie impossible automatiquement. Sélectionnez le texte du formulaire.";
         }
